@@ -81,6 +81,4 @@ test:
 #
 production:
   <<: *default
-  database: plssWorkk_production
-  username: plssWorkk
-  password: <%= ENV["PLSSWORKK_DATABASE_PASSWORD"] %>
+  url: <%= ENV['DATABASE_URL'] %>
