@@ -1,10 +1,28 @@
-class ApplicationController < ActionController::Base
+class ApplicationController < ActionController::API
+    rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity
+    rescue_from ActiveRecord::RecordNotFound, with: :render_not_found
     include ActionController::Cookies
-
-    # test controller for enviro/code set up
-    def hello_world
-        session[:count] = (session[:count] || 0) + 1
-        render json: { count: session[:count] }
-    end
     
+    before_action :authorized_runner
+
+    def current_runner
+        runner = Runner.find_by(id: session[:runner_id])
+        runner
+    end
+
+    def authorized_runner  
+        return render json: { error: "Not authorized" }, status: :unauthorized unless current_runner
+    end
+
+    private
+
+    def render_unprocessable_entity(invalid)
+        render json: {errors: invalid.record.errors}, status: :unprocessable_entity
+    end 
+
+     def render_not_found(error)
+        render json: {errors: {error.model => "Not Found"}}, status: :not_found
+    end 
+
+
 end

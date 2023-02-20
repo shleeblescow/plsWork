@@ -1,11 +1,25 @@
+
 Rails.application.routes.draw do
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  resources :wx_cards
+  resources :run_runner_joins
+  resources :runs
+  resources :runners
 
-  # Defines the root path route ("/")
-  # root "articles#index"
+  post '/login', to: 'sessions#create'
+  delete '/logout', to:'sessions#delete' 
+  get '/authorized_runner', to: 'runners#show'
+  # get '/userprofile/:id', to: 'users#userprofile'
 
-  # route to test your configuration
-  get '/hello', to: 'application#hello_world'
+  # get '/createdtrips/:id', to:'users#createdtrips'
+  # get '/joinedtrips/:id', to:'users#joinedtrips'
+  # get '/profilebikes/:id', to:'users#profilebikes'
+  # get '/userfunphotos/:id', to:'users#funphotos'
 
+  # gona need a custom route for getting that users bikes me thinks (ew did i really just that?  gross)
 
+  # get '*path',
+  #     to: 'fallback#index',
+  #     constraints: ->(req) { !req.xhr? && req.format.html? }
+ 
+ 
 end
