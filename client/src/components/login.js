@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
 
 // CSS Stuff: make the input boxes NOT span, maybe smaller text in h2 and bigger input labels
@@ -28,8 +28,6 @@ function Login({onUpdateRunner}) {
         fetch(`/login`,{
           method:'POST',
           body: formDataSubmit
-        //   headers:{'Content-Type': 'application/json'},
-        //   body:JSON.stringify(user)
         })
         .then(res => {
             if(res.ok){
@@ -88,10 +86,9 @@ function Login({onUpdateRunner}) {
 
 
         <p>dont have an account?</p>
-        <h3>welll sucks to suck #loser</h3>
-        {/* <Link to={"/signup"} className={linkClass}>
-            <i>get scheduling</i>
-        </Link> */}
+        <Link to={"/signup"} className={linkClass}>
+            <i>get running</i>
+        </Link>
         </div>
     )
 }

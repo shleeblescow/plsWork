@@ -4,6 +4,7 @@ import './App.css';
 
 import Login from "./components/login";
 import Navbar from "./components/navBar";
+import SignUp from "./components/signUp";
 
 function App() {
 
@@ -36,21 +37,29 @@ function App() {
             setCurrentRunner={setCurrentRunner}
           />
           :
-            //<h2>{"log in to get dirty (and flirty??)"}</h2>
           <></>
       }
 
       <br/>
       <div className="App">
         <Routes>
-        <Route exact path="/" element={
+
+          <Route exact path="/" element={
             <Login
               onUpdateRunner={updateRunner}
             />
           }/>
+
+          <Route exact path="/signup" element={
+            <SignUp
+              onUpdateRunner={updateRunner}
+            />
+          }/>
+
           <Route exact path="/hipa" element={
             <h1>mornin pa</h1>
           }/>
+
         </Routes>
       </div>
     </Router>
