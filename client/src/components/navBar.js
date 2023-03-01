@@ -12,9 +12,9 @@ export default function Navbar({setCurrentRunner, currentRunner}) {
         .then(navigate('/'))
     }
 
-    // function moreNavDrama() {
-    //     navigate(`/userprofile/${currentUser.id}`)
-    // }
+    function moreNavDrama() {
+        navigate(`/runs`)
+    }
 
     // function andMoreNavDrama() {
     //     navigate("/browsetrips/create")
@@ -35,11 +35,11 @@ export default function Navbar({setCurrentRunner, currentRunner}) {
             </button>
 
 
-            {/* <button onClick={moreNavDrama} className={buttonClass}>
-                my profile
+            <button onClick={moreNavDrama} className={buttonClass}>
+                runs
             </button>
 
-            <button onClick={andMoreNavDrama} className={buttonClass}>
+            {/* <button onClick={andMoreNavDrama} className={buttonClass}>
                 post a trip
             </button> */}
 

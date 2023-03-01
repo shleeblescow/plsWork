@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_02_20_174951) do
+ActiveRecord::Schema[7.0].define(version: 2023_02_28_202156) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -35,15 +35,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_20_174951) do
 
   create_table "runs", force: :cascade do |t|
     t.string "run_location"
-    t.datetime "when"
+    t.time "when"
     t.integer "mileage"
-    t.integer "run_type"
+    t.string "run_type"
     t.string "pace"
     t.integer "creator_id"
-    t.string "integer"
     t.boolean "bevs_after"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "notes"
   end
 
   create_table "wx_cards", force: :cascade do |t|

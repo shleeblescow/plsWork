@@ -5,10 +5,13 @@ import './App.css';
 import Login from "./components/login";
 import Navbar from "./components/navBar";
 import SignUp from "./components/signUp";
+import MainRunPage from "./components/mainRunPage";
 
 function App() {
 
+  const [errors, setErrors] = useState(false)
   const [currentRunner, setCurrentRunner] = useState(false)
+  const [allRuns, setAllRuns] = useState([])
 
   useEffect(() => {
     fetch("/authorized_runner")
@@ -17,14 +20,28 @@ function App() {
         res.json()
         .then((runner) => {
           console.log('access granted')
-          console.log(runner)
-          updateRunner(runner);
+          updateRunner(runner)
+          fetchRuns()
+
         });
       } else {
         console.log('not authorized')
       }
     })
   },[])
+
+  const fetchRuns = () => {
+    fetch('/runs')
+    .then(res => {
+      if(res.ok){
+        res.json().then((runs) => { 
+          setAllRuns(runs)
+      })
+      }else {
+        res.json().then(data => setErrors(data.error))
+      }
+    })
+  }
 
   const updateRunner = (runner) => setCurrentRunner(runner)
 
@@ -58,6 +75,14 @@ function App() {
 
           <Route exact path="/hipa" element={
             <h1>mornin pa</h1>
+          }/>
+
+          <Route exact path = 'runs' element={
+            <MainRunPage
+              fetchRuns={fetchRuns}
+              allRuns={allRuns}
+              currentRunner={currentRunner}
+            />
           }/>
 
         </Routes>
