@@ -4,6 +4,11 @@ class RunRunnerJoinsController < ApplicationController
         render json: RunRunnerJoin.all
     end
 
+    def show
+        join = RunRunnerJoin.find(params[:id])
+        render json: join, status: :ok
+    end
+
     def create
         join = RunRunnerJoin.create!(run_runner_params)
         render json: join, status: :created

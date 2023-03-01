@@ -7,7 +7,7 @@ export default function MainRunPage({fetchRuns, allRuns, currentRunner, allJoins
 
     useEffect(() => {
         fetchRuns()
-        console.log(allJoins)
+        console.log("all joins", allJoins)
     },[])
 
     return (
