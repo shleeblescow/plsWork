@@ -9,8 +9,6 @@ export default function MainRunPage({fetchRuns, allRuns, currentRunner}) {
         fetchRuns()
     },[])
 
-    // console.log(allRuns)
-
     return (
         <div>
             <h1> heheheh so you tryna run or what </h1>

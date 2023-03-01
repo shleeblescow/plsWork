@@ -1,4 +1,24 @@
+import React, {useState, useEffect} from 'react'
+
 export default function RenderRunCard({thisRun}) {
+
+    const [host, setHost] = useState({})
+    const [attendees, setAttendees] = useState([])
+
+    useEffect(() => {
+        fetch(`/runs/${thisRun.id}`)
+        .then(res => {
+            if(res.ok){
+                res.json().then(data => {
+                    // setAttendees(data.users)
+                    console.log(data.runners)
+                })
+            } else {
+                console.log('you messed up buddy')
+            }
+        })
+
+    },[])
 
     const cardDiv = "max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700"
     const imgClass = 'rounded-t-lg object-cover h-48 w-96'
@@ -16,7 +36,7 @@ export default function RenderRunCard({thisRun}) {
                     <p><b>Mileage:</b> {thisRun.mileage}</p>
                     <p><b>Extra Deets:</b> {thisRun.run_type}</p>
                     {/* will need to fetch creator's name from creator id */}
-                    <p><b>Host:</b> {thisRun.creator_id}</p> 
+                    <p><b>Host:</b> {thisRun.creator_id.name}</p> 
                     {/* will need to fetch associated user data */}
                     <p><b>Who's Going:</b> some citius folk</p>
                     <br/>
