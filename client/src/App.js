@@ -12,6 +12,7 @@ function App() {
   const [errors, setErrors] = useState(false)
   const [currentRunner, setCurrentRunner] = useState(false)
   const [allRuns, setAllRuns] = useState([])
+  const [allJoins, setAllJoins] = useState([])
 
   useEffect(() => {
     fetch("/authorized_runner")
@@ -22,6 +23,7 @@ function App() {
           console.log('access granted')
           updateRunner(runner)
           fetchRuns()
+          fetchJoins()
 
         });
       } else {
@@ -42,6 +44,21 @@ function App() {
       }
     })
   }
+
+  const fetchJoins = () => {
+    fetch('/run_runner_joins')
+    .then(res => {
+      if(res.ok){
+        res.json().then((joins) => { 
+          setAllJoins(joins)
+      })
+      }else {
+        res.json().then(data => setErrors(data.error))
+      }
+    })
+  }
+
+
 
   const updateRunner = (runner) => setCurrentRunner(runner)
 
@@ -82,6 +99,7 @@ function App() {
               fetchRuns={fetchRuns}
               allRuns={allRuns}
               currentRunner={currentRunner}
+              allJoins={allJoins}
             />
           }/>
 

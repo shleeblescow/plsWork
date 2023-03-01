@@ -3,10 +3,11 @@ import {v4 as uuid} from "uuid";
 
 import RenderRunCard from "./renderRunCard"
 
-export default function MainRunPage({fetchRuns, allRuns, currentRunner}) {
+export default function MainRunPage({fetchRuns, allRuns, currentRunner, allJoins}) {
 
     useEffect(() => {
         fetchRuns()
+        console.log(allJoins)
     },[])
 
     return (
