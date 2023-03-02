@@ -100,6 +100,7 @@ function App() {
               fetchRuns={fetchRuns}
               allRuns={allRuns}
               currentRunner={currentRunner}
+              fetchJoins={fetchJoins}
               allJoins={allJoins}
             />
           }/>
