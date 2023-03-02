@@ -1,17 +1,20 @@
 import React, {useState, useEffect} from 'react'
+import {v4 as uuid} from "uuid";
 
-export default function RenderRunCard({thisRun}) {
+export default function RenderRunCard({thisRun, attendees}) {
 
     const [host, setHost] = useState({})
-    const [attendees, setAttendees] = useState([])
+    // const [attendees, setAttendees] = useState([])
 
     useEffect(() => {
         fetch(`/runs/${thisRun.id}`)
         .then(res => {
             if(res.ok){
                 res.json().then(data => {
-                    // setAttendees(data.users)
-                    console.log(data.runners)
+                    // setAttendees(data.runners)
+                    //console.log(data.runners)
+                    // console.log(data)
+                    console.log(thisRun, attendees)
                 })
             } else {
                 console.log('you messed up buddy')
@@ -38,7 +41,14 @@ export default function RenderRunCard({thisRun}) {
                     {/* will need to fetch creator's name from creator id */}
                     <p><b>Host:</b> {thisRun.creator_id.name}</p> 
                     {/* will need to fetch associated user data */}
-                    <p><b>Who's Going:</b> some citius folk</p>
+                    <p>
+                        <b>Who's Going:</b> 
+                        {attendees.map((eachAttendee) =>
+                            <div key={uuid()}>
+                                <h4>{eachAttendee.name}</h4>
+                            </div>
+                        )}
+                    </p>
                     <br/>
                     <div>
                         <button 

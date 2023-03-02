@@ -29,6 +29,7 @@ export default function MainRunPage({fetchRuns, allRuns, currentRunner, fetchJoi
                 <div key={uuid()} >
                     <RenderRunCard
                         thisRun={eachRun}
+                        attendees={eachRun.runners}
                         // onButtonDrama={() => navigate(`/browsetrips/${eachTrip.id}`)}
                     />
                     <br/>
