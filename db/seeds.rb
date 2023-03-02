@@ -88,30 +88,30 @@ run4 = Run.create(
 
 # joins for run 1
 j1 = RunRunnerJoin.create(
-    runner_id: runner3,
-    run_id: run1
+    runner_id: runner3.id,
+    run_id: run1.id
 )
 
 j2 = RunRunnerJoin.create(
-    runner_id: runner4,
-    run_id: run1
+    runner_id: runner4.id,
+    run_id: run1.id
 )
 
 # joins for run 2
 j1 = RunRunnerJoin.create(
-    runner_id: runner1,
-    run_id: run2
+    runner_id: runner1.id,
+    run_id: run2.id
 )
 
 j2 = RunRunnerJoin.create(
-    runner_id: runner4,
-    run_id: run2
+    runner_id: runner4.id,
+    run_id: run2.id
 )
 
 # joins for run 3
 j3 = RunRunnerJoin.create(
-    runner_id: runner2,
-    run_id: run3
+    runner_id: runner2.id,
+    run_id: run3.id
 )
 
 puts "thats all you get stoopid"
