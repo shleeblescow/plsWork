@@ -1,6 +1,8 @@
-body {
+
+/* this makes it so you can't scroll >:( */
+/* body {
   overflow: hidden;
-}
+} */
 
 @import '~flowbite';
 
