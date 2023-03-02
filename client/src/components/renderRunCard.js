@@ -1,26 +1,33 @@
 import React, {useState, useEffect} from 'react'
 import {v4 as uuid} from "uuid";
 
-export default function RenderRunCard({thisRun, attendees}) {
+export default function RenderRunCard({thisRun, allPeeps, currentRunner}) {
 
     const [host, setHost] = useState({})
-    // const [attendees, setAttendees] = useState([])
+    const [attendees, setAttendees] = useState([])
+
+    // good stuff here but not sure if actually will need it - don't w current architecture
+    // useEffect(() => {
+    //     fetch(`/runs/${thisRun.id}`)
+    //     .then(res => {
+    //         if(res.ok){
+    //             res.json().then(data => {
+    //                 // setAttendees(data.runners)
+    //                 //console.log(data.runners)
+    //                 // console.log(data)
+    //                 console.log(thisRun, attendees)
+    //             })
+    //         } else {
+    //             console.log('you messed up buddy')
+    //         }
+    //     })
+
+    // },[])
 
     useEffect(() => {
-        fetch(`/runs/${thisRun.id}`)
-        .then(res => {
-            if(res.ok){
-                res.json().then(data => {
-                    // setAttendees(data.runners)
-                    //console.log(data.runners)
-                    // console.log(data)
-                    console.log(thisRun, attendees)
-                })
-            } else {
-                console.log('you messed up buddy')
-            }
-        })
-
+        console.log('ehy boi')
+        // console.log(allPeeps.where.not(id=thisRun.creator_id))
+        // setAttendees(allPeeps.where.not(id=thisRun.creator_id))
     },[])
 
     const cardDiv = "max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700"
@@ -41,14 +48,14 @@ export default function RenderRunCard({thisRun, attendees}) {
                     {/* will need to fetch creator's name from creator id */}
                     <p><b>Host:</b> {thisRun.creator_id.name}</p> 
                     {/* will need to fetch associated user data */}
-                    <p>
+                    <div>
                         <b>Who's Going:</b> 
-                        {attendees.map((eachAttendee) =>
+                        {allPeeps.map((eachAttendee) =>
                             <div key={uuid()}>
                                 <h4>{eachAttendee.name}</h4>
                             </div>
                         )}
-                    </p>
+                    </div>
                     <br/>
                     <div>
                         <button 

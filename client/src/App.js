@@ -38,7 +38,7 @@ function App() {
       if(res.ok){
         res.json().then((runs) => { 
           setAllRuns(runs)
-          console.log(runs)
+          // console.log(runs)
       })
       }else {
         res.json().then(data => setErrors(data.error))

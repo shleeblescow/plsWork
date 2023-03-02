@@ -8,7 +8,7 @@ export default function MainRunPage({fetchRuns, allRuns, currentRunner, fetchJoi
     useEffect(() => {
         fetchRuns()
         fetchJoins()
-        console.log("all joins", allJoins)
+        // console.log("all joins", allJoins)
     },[])
 
     return (
@@ -28,9 +28,9 @@ export default function MainRunPage({fetchRuns, allRuns, currentRunner, fetchJoi
             {allRuns.map((eachRun) => 
                 <div key={uuid()} >
                     <RenderRunCard
+                        currentRunner={currentRunner}
                         thisRun={eachRun}
-                        attendees={eachRun.runners}
-                        // onButtonDrama={() => navigate(`/browsetrips/${eachTrip.id}`)}
+                        allPeeps={eachRun.runners}
                     />
                     <br/>
                 </div>
