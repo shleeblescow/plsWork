@@ -3,17 +3,22 @@ import {v4 as uuid} from "uuid";
 
 export default function RenderRunCard({thisRun, allPeeps, currentRunner, host}) {
 
-   const [nonHostRunner, setNonHostRunners] = useState([])
+//    const [nonHostRunner, setNonHostRunners] = useState([])
 
     useEffect(() => {
         // it has the peeps who are runnign down pat
         console.log(thisRun, allPeeps, host)
-        allPeeps.forEach((eachPeep) => {
-            if(eachPeep.id =! thisRun.creator_id){
-                console.log('heres a runner', eachPeep)
-            }
-        }
-        )
+        // allPeeps.forEach((eachPeep) => {
+        //     if(eachPeep.id =! thisRun.creator_id){
+        //         console.log('heres a runner', eachPeep)
+        //     }
+        // }
+        // )
+        // for(let peep of allPeeps) {
+        //     if(peep.id == thisRun.creator_id){
+        //         console.log('heres the host', peep)
+        //     }
+        // }
     },[])
 
     const cardDiv = "max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700"
@@ -32,19 +37,15 @@ export default function RenderRunCard({thisRun, allPeeps, currentRunner, host}) 
                     <p><b>Mileage:</b> {thisRun.mileage}</p>
                     <p><b>Extra Deets:</b> {thisRun.run_type}</p>
                     {/* will need to fetch creator's name from creator id */}
-                    <p><b>Host:</b> bob</p> 
+                    <p><b>Host: </b>{host.name}</p> 
                     {/* will need to fetch associated user data */}
                     <div>
                         <b>Who's Going:</b> 
-                        {/* {allPeeps.map((eachAttendee) => {
-                            if(eachAttendee.id =! thisRun.creator_id){
-                                console.log('heres a runner')
-                                // <div key={uuid()}>
-                                //     <h4>eachAttendee.id</h4>
-                                // </div>
-                            }
-                        }
-                        )} */}
+                        {allPeeps.map((eachAttendee) => 
+                            <div key={uuid()}>
+                                <h4>{eachAttendee.name}</h4>
+                            </div>
+                        )}
                     </div>
                     <br/>
                     <div>
