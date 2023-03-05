@@ -1,33 +1,19 @@
 import React, {useState, useEffect} from 'react'
 import {v4 as uuid} from "uuid";
 
-export default function RenderRunCard({thisRun, allPeeps, currentRunner}) {
+export default function RenderRunCard({thisRun, allPeeps, currentRunner, host}) {
 
-    const [host, setHost] = useState({})
-    const [attendees, setAttendees] = useState([])
-
-    // good stuff here but not sure if actually will need it - don't w current architecture
-    // useEffect(() => {
-    //     fetch(`/runs/${thisRun.id}`)
-    //     .then(res => {
-    //         if(res.ok){
-    //             res.json().then(data => {
-    //                 // setAttendees(data.runners)
-    //                 //console.log(data.runners)
-    //                 // console.log(data)
-    //                 console.log(thisRun, attendees)
-    //             })
-    //         } else {
-    //             console.log('you messed up buddy')
-    //         }
-    //     })
-
-    // },[])
+   const [nonHostRunner, setNonHostRunners] = useState([])
 
     useEffect(() => {
-        console.log('ehy boi')
-        // console.log(allPeeps.where.not(id=thisRun.creator_id))
-        // setAttendees(allPeeps.where.not(id=thisRun.creator_id))
+        // it has the peeps who are runnign down pat
+        console.log(thisRun, allPeeps, host)
+        allPeeps.forEach((eachPeep) => {
+            if(eachPeep.id =! thisRun.creator_id){
+                console.log('heres a runner', eachPeep)
+            }
+        }
+        )
     },[])
 
     const cardDiv = "max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700"
@@ -46,15 +32,19 @@ export default function RenderRunCard({thisRun, allPeeps, currentRunner}) {
                     <p><b>Mileage:</b> {thisRun.mileage}</p>
                     <p><b>Extra Deets:</b> {thisRun.run_type}</p>
                     {/* will need to fetch creator's name from creator id */}
-                    <p><b>Host:</b> {thisRun.creator_id.name}</p> 
+                    <p><b>Host:</b> bob</p> 
                     {/* will need to fetch associated user data */}
                     <div>
                         <b>Who's Going:</b> 
-                        {allPeeps.map((eachAttendee) =>
-                            <div key={uuid()}>
-                                <h4>{eachAttendee.name}</h4>
-                            </div>
-                        )}
+                        {/* {allPeeps.map((eachAttendee) => {
+                            if(eachAttendee.id =! thisRun.creator_id){
+                                console.log('heres a runner')
+                                // <div key={uuid()}>
+                                //     <h4>eachAttendee.id</h4>
+                                // </div>
+                            }
+                        }
+                        )} */}
                     </div>
                     <br/>
                     <div>

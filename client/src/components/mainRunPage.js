@@ -31,6 +31,7 @@ export default function MainRunPage({fetchRuns, allRuns, currentRunner, fetchJoi
                         currentRunner={currentRunner}
                         thisRun={eachRun}
                         allPeeps={eachRun.runners}
+                        host={eachRun.runners.find(peeps => peeps.id == eachRun.creator_id)}
                     />
                     <br/>
                 </div>

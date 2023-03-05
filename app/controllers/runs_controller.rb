@@ -26,6 +26,11 @@ class RunsController < ApplicationController
         head :no_content
     end
 
+    # def attendefetch
+    #     run = Run.find(params[:id])
+    #     attendees = runner.where
+    # end
+
     private
 
     def run_params
