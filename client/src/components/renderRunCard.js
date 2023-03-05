@@ -3,22 +3,24 @@ import {v4 as uuid} from "uuid";
 
 export default function RenderRunCard({thisRun, allPeeps, currentRunner, host}) {
 
-//    const [nonHostRunner, setNonHostRunners] = useState([])
+   const [nonHostRunners, setNonHostRunners] = useState(allPeeps)
 
     useEffect(() => {
-        // it has the peeps who are runnign down pat
-        console.log(thisRun, allPeeps, host)
-        // allPeeps.forEach((eachPeep) => {
-        //     if(eachPeep.id =! thisRun.creator_id){
-        //         console.log('heres a runner', eachPeep)
-        //     }
-        // }
-        // )
-        // for(let peep of allPeeps) {
-        //     if(peep.id == thisRun.creator_id){
-        //         console.log('heres the host', peep)
-        //     }
-        // }
+
+        // console.log(nonHostRunners)
+        // it has the all peeps who are runnign and the host
+        // console.log(thisRun, allPeeps, host)
+        // console.log(nonHostRunners)
+
+        // tryna separate the host from the runners is something else
+        // nonHostRunners.forEach(peeps => {
+            // console.log(thisRun, peeps.name)
+        for(let peep of nonHostRunners) {
+            if(peep.id == thisRun.creator_id) {
+                console.log('gott damn', thisRun)
+            }
+        }
+        
     },[])
 
     const cardDiv = "max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700"
